@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media screen and (max-width: 360px) {
+  .verySmall {
+    flex-direction: column;
+    margin-left: 3rem;
+  }
+  .verySmall h3 {
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
+}

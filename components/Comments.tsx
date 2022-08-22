@@ -6,7 +6,7 @@ interface Props {
   post: Post
 }
 
-interface IFormInput {
+type FormValues = {
   _id: string
   name: string
   email: string
@@ -18,9 +18,8 @@ function Comments({ post }: Props) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
-  // eslint-disable-next-line no-use-before-define
-  const onSubmit: SubmitHandler<IFormInput> = async data => {
+  } = useForm<FormValues>()
+  const onSubmit: SubmitHandler<FormValues> = async data => {
     await fetch('/api/createComment', {
       method: 'POST',
       body: JSON.stringify(data),

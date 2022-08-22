@@ -19,7 +19,7 @@ function Comments({ post }: Props) {
     handleSubmit,
     formState: { errors },
   } = useForm()
-
+  // eslint-disable-next-line no-use-before-define
   const onSubmit: SubmitHandler<IFormInput> = async data => {
     await fetch('/api/createComment', {
       method: 'POST',

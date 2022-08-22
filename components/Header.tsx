@@ -13,16 +13,16 @@ function Header() {
           />
         </Link>
         <div className='hidden md:inline-flex items-center space-x-5'>
-          <h3>About</h3>
-          <h3>Contact</h3>
-          <h3 className='text-white bg-green-600 px-4 py-1 rounded-full'>
+          <h3 className='cursor-pointer hover:text-green-600'>About</h3>
+          <h3 className='cursor-pointer hover:text-green-600'>Contact</h3>
+          <h3 className='cursor-pointer hover:bg-green-600 hover:text-white border border-green-600 px-4 py-1 rounded-full text-green-600 transition duration-150 ease-in'>
             Folllow
           </h3>
         </div>
       </div>
-      <div className='flex items-center space-x-5 text-green-600'>
-        <h3>Sign In</h3>
-        <h3 className=' border border-green-600 px-4 py-1 rounded-full '>
+      <div className='flex items-center space-x-5'>
+        <h3 className='cursor-pointer hover:text-green-600'>Sign In</h3>
+        <h3 className='cursor-pointer hover:bg-green-600 hover:text-white border border-green-600 px-4 py-1 rounded-full text-green-600 transition duration-150 ease-in'>
           Get Started
         </h3>
       </div>

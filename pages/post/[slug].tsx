@@ -4,6 +4,8 @@ import Header from '../../components/Header'
 import { sanityClient, urlFor } from '../../sanity'
 import { Post } from '../../typing'
 import PortableText from 'react-portable-text'
+import Comments from '../../components/Comments'
+import ApprovedComments from '../../components/ApprovedComments'
 
 interface Props {
   post: Post
@@ -18,7 +20,7 @@ function Post({ post }: Props) {
         src={urlFor(post.mainImage).url()}
         alt={post.slug.current}
       />
-      <article className='max-w-3xl mx-auto sm:mx-10'>
+      <article className='max-w-3xl mx-auto'>
         <h1 className='text-3xl mt-10 mb-3'>{post.title}</h1>
         <h2 className='text-xl font-light text-gray-500 mb-2'>
           {post.description}
@@ -32,7 +34,7 @@ function Post({ post }: Props) {
           <p>
             Blog post by{' '}
             <span className='text-green-600'>{post.author.name}</span> -
-            Published at {new Date(post._createdAt).toLocaleString()}
+            Published at {new Date(post._createdAt).toLocaleDateString('en-US')}
           </p>
         </div>
 
@@ -60,7 +62,10 @@ function Post({ post }: Props) {
           />
         </div>
       </article>
-      <hr className='max-w-lg my-5 mx-auto border border-yellow-500' />
+      <hr className='max-w-lg mt-10 mx-auto border border-yellow-500' />
+
+      <Comments post={post} />
+      <ApprovedComments post={post} />
     </main>
   )
 }
@@ -97,6 +102,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       name,
       image
     },
+    'comments': *[
+       _type == 'comment' && post._ref == ^._id && approved == true
+    ],
     description,
     mainImage,
     slug,

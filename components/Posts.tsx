@@ -8,7 +8,6 @@ interface Props {
 }
 
 function Posts({ posts }: Props) {
-  console.log(posts)
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 px-5 lg:grid-cols-3 gap-3 md:gap-6 py-6 p-2 max-w-7xl'>
       {posts.map(post => (
